@@ -16,5 +16,17 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <views:HierarchyView DataContext="{Binding HierarchyViewModel}"></views:HierarchyView>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <views:HierarchyView Grid.Column="0"
+                             DataContext="{Binding HierarchyViewModel}">
+        </views:HierarchyView>
+        <views:InspectorView Grid.Column="1"
+                             DataContext="{Binding InspectorViewModel}">
+        </views:InspectorView>
+    </Grid>
 </Window>

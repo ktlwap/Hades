@@ -21,6 +21,10 @@ public partial class App : Application
             {
                 DataContext = new MainWindowViewModel(),
             };
+            
+#if DEBUG
+            desktop.MainWindow.Focus();
+#endif
         }
 
         base.OnFrameworkInitializationCompleted();
