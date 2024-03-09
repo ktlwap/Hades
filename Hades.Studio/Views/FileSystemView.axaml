@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Hades.Studio.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Hades.Studio.Views.FileSystemView"
+             x:DataType="vm:FileSystemViewModel">
+    
+    <Design.DataContext>
+        <vm:FileSystemViewModel/>
+    </Design.DataContext>
+    
+    <TreeView ItemsSource="{Binding Nodes}"
+              SelectedItems="{Binding SelectedNodes}"
+              SelectionMode="Multiple"
+              AutoScrollToSelectedItem="True">
+        <TreeView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </ContextMenu>
+        </TreeView.ContextMenu>
+        <TreeView.ItemTemplate>
+            <TreeDataTemplate ItemsSource="{Binding Children}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
+                    <Svg Path="{Binding IconPath}"
+                         Css=".black { fill: #FFFFFF; }" />
+                    <TextBlock Text="{Binding Name}"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </TreeDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>

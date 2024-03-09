@@ -21,11 +21,18 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         
-        <views:HierarchyView Grid.Column="0"
+        <views:HierarchyView Grid.Column="0" Grid.Row="0"
                              DataContext="{Binding HierarchyViewModel}">
         </views:HierarchyView>
-        <views:InspectorView Grid.Column="1"
+        <views:FileSystemView Grid.Column="0" Grid.Row="1"
+                             DataContext="{Binding FileSystemViewModel}">
+        </views:FileSystemView>
+        <views:InspectorView Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                              DataContext="{Binding InspectorViewModel}">
         </views:InspectorView>
     </Grid>
