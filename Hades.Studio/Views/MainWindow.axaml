@@ -16,24 +16,71 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+    <Window.Styles>
         
-        <views:HierarchyView Grid.Column="0" Grid.Row="0"
-                             DataContext="{Binding HierarchyViewModel}">
-        </views:HierarchyView>
-        <views:FileSystemView Grid.Column="0" Grid.Row="1"
-                             DataContext="{Binding FileSystemViewModel}">
-        </views:FileSystemView>
-        <views:InspectorView Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
-                             DataContext="{Binding InspectorViewModel}">
-        </views:InspectorView>
+        <Style Selector="TabControl">
+            <Setter Property="Background" Value="#212121"/>
+        </Style>
+        
+        <Style Selector="TabControl WrapPanel">
+            <Setter Property="Background" Value="#2b2b2b"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="MinHeight" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="MaxHeight" Value="28"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#252525"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Margin" Value="0 0 0 2"/>
+            <Setter Property="Padding" Value="10 0"/>
+        </Style>
+        
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Background" Value="#3d3d3d"/>
+        </Style>
+
+    </Window.Styles>
+    
+    <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*">
+
+        <TabControl Grid.Column="0" Grid.Row="0" Margin="5">
+            <TabItem Header="Hierarchy">
+                <views:HierarchyView DataContext="{Binding HierarchyViewModel}">
+                </views:HierarchyView>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+            <TabItem Header="Filesystem">
+                <views:FileSystemView DataContext="{Binding FileSystemViewModel}">
+                </views:FileSystemView>
+            </TabItem>
+            <TabItem Header="Game Console">
+                <TextBlock Margin="5">This is the game console</TextBlock>
+            </TabItem>
+            <TabItem Header="Engine Console">
+                <TextBlock Margin="5">This is the engine console</TextBlock>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="1" Grid.Row="0" Margin="5">
+            <TabItem Header="Viewport">
+                <Grid>
+                    <TextBlock>Placeholder for GL Viewport</TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+            <TabItem Header="Inspector">
+                <views:InspectorView DataContext="{Binding InspectorViewModel}">
+                </views:InspectorView>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

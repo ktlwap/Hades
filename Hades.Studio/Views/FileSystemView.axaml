@@ -23,7 +23,7 @@
         </TreeView.ContextMenu>
         <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding Children}">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Svg Path="{Binding IconPath}"
                          Css=".black { fill: #FFFFFF; }" />
                     <TextBlock Text="{Binding Name}"

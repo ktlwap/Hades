@@ -18,12 +18,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Margin="0 5 0 5">
             <CheckBox Grid.Column="0"
                       IsChecked="{Binding Details.Node.Enabled}">
             </CheckBox>
@@ -32,58 +27,96 @@
             </TextBox>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*,Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto">
+            <!-- Position Inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="0"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Position</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
 
-            <TextBlock Grid.Column="0" Grid.Row="0">Position</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0">X</TextBlock>
-            <TextBox Grid.Column="2" Grid.Row="0">0.0</TextBox>
-            <TextBlock Grid.Column="3" Grid.Row="0">Y</TextBlock>
-            <TextBox Grid.Column="4" Grid.Row="0">0.0</TextBox>
-            <TextBlock Grid.Column="5" Grid.Row="0">Z</TextBlock>
-            <TextBox Grid.Column="6" Grid.Row="0">0.0</TextBox>
+            <!-- Rotation inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Rotation</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
 
-            <TextBlock Grid.Column="0" Grid.Row="1">Rotation</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="1">X</TextBlock>
-            <TextBox Grid.Column="2" Grid.Row="1">0.0</TextBox>
-            <TextBlock Grid.Column="3" Grid.Row="1">Y</TextBlock>
-            <TextBox Grid.Column="4" Grid.Row="1">0.0</TextBox>
-            <TextBlock Grid.Column="5" Grid.Row="1">Z</TextBlock>
-            <TextBox Grid.Column="6" Grid.Row="1">0.0</TextBox>
-
-            <TextBlock Grid.Column="0" Grid.Row="2">Scale</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2">X</TextBlock>
-            <TextBox Grid.Column="2" Grid.Row="2">0.0</TextBox>
-            <TextBlock Grid.Column="3" Grid.Row="2">Y</TextBlock>
-            <TextBox Grid.Column="4" Grid.Row="2">0.0</TextBox>
-            <TextBlock Grid.Column="5" Grid.Row="2">Z</TextBlock>
-            <TextBox Grid.Column="6" Grid.Row="2">0.0</TextBox>
-
+            <!-- Scale inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="2"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Scale</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
         </Grid>
-
-
-        <ItemsRepeater Grid.Row="2" ItemsSource="{Binding Details.ComponentDetails}">
-
+        
+        <ItemsRepeater Grid.Row="2"
+                       ItemsSource="{Binding Details.ComponentDetails}">
             <ItemsRepeater.ItemTemplate>
-
                 <DataTemplate>
-                    <Expander VerticalAlignment="Top" IsExpanded="True" HorizontalAlignment="Stretch">
+                    <Expander VerticalAlignment="Top"
+                              IsExpanded="True"
+                              HorizontalAlignment="Stretch" Margin="0, 3, 0, 3">
                         <Expander.Header>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <CheckBox IsChecked="{Binding Enabled}"/>
+                                <TextBlock Text="{Binding Name}"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
                         </Expander.Header>
+                        
                         <Grid RowDefinitions="*,*" ColumnDefinitions="150,*">
                             <TextBlock Grid.Row="0" Grid.Column="0"
                                        VerticalAlignment="Center">
@@ -98,7 +131,6 @@
                             <CheckBox Grid.Row="1" Grid.Column="1" />
                         </Grid>
                     </Expander>
-
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>
