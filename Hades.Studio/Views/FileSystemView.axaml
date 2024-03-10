@@ -11,26 +11,55 @@
         <vm:FileSystemViewModel/>
     </Design.DataContext>
     
-    <TreeView ItemsSource="{Binding Nodes}"
-              SelectedItems="{Binding SelectedNodes}"
-              SelectionMode="Multiple"
-              AutoScrollToSelectedItem="True">
-        <TreeView.ContextMenu>
-            <ContextMenu>
-                <MenuItem Header="Copy"/>
-                <MenuItem Header="Paste"/>
-            </ContextMenu>
-        </TreeView.ContextMenu>
-        <TreeView.ItemTemplate>
-            <TreeDataTemplate ItemsSource="{Binding Children}">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Svg Path="{Binding IconPath}"
-                         Css=".black { fill: #FFFFFF; }" />
-                    <TextBlock Text="{Binding Name}"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </StackPanel>
-            </TreeDataTemplate>
-        </TreeView.ItemTemplate>
-    </TreeView>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MinWidth="150"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TreeView Grid.Column="0"
+                  ItemsSource="{Binding Nodes}"
+                  SelectedItems="{Binding SelectedNodes}"
+                  SelectionMode="Multiple"
+                  AutoScrollToSelectedItem="True">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy"/>
+                    <MenuItem Header="Paste"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemTemplate>
+                <TreeDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
+                        <Svg Path="{Binding SmallIconPath}"
+                             Css=".black { fill: #FFFFFF; }"/>
+                        <TextBlock Text="{Binding Name}"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TreeDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        
+        <GridSplitter Grid.Column="1" Background="Black" ResizeDirection="Columns"/>
+        
+        <ScrollViewer Grid.Column="2">
+            <ItemsRepeater ItemsSource="{Binding DetailedViewNodes}">
+                <ItemsRepeater.Layout>
+                    <WrapLayout Orientation="Horizontal"/>
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Width="84">
+                            <Svg Path="{Binding LargeIconPath}"
+                                 Css=".black { fill: #FFFFFF; }"/>
+                            <TextBlock Text="{Binding Name}"
+                                       TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

@@ -10,22 +10,19 @@ public enum FileSystemNodeType
 
 public class FileSystemNode
 {
-    public string Name { get; set; }
-    public string IconPath { get; set; }
+    public string Name { get; init; }
+    public string SmallIconPath { get; set; }
+    public string LargeIconPath { get; set; }
     public FileSystemNodeType Type { get; set; }
+    public FileSystemNode? Parent { get; set; }
     public ObservableCollection<FileSystemNode> Children { get; }
 
-    public FileSystemNode(string name, string iconPath)
+    public FileSystemNode(string name, FileSystemNodeType type)
     {
         Name = name;
-        IconPath = iconPath;
+        Type = type;
+        SmallIconPath = "";
+        LargeIconPath = "";
         Children = new ObservableCollection<FileSystemNode>();
-    }
-    
-    public FileSystemNode(string name, string iconPath, ObservableCollection<FileSystemNode> children)
-    {
-        Name = name;
-        IconPath = iconPath;
-        Children = children;
     }
 }
