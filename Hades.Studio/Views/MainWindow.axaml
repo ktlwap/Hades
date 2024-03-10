@@ -46,7 +46,7 @@
 
     </Window.Styles>
     
-    <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*">
+    <Grid ColumnDefinitions="1*,2*,1.5*" RowDefinitions="*,*">
 
         <TabControl Grid.Column="0" Grid.Row="0" Margin="5">
             <TabItem Header="Hierarchy">
@@ -68,9 +68,9 @@
             </TabItem>
         </TabControl>
         
-        <TabControl Grid.Column="1" Grid.Row="0" Margin="5">
+        <TabControl Grid.Column="1" Grid.Row="0" Margin="5" Padding="0">
             <TabItem Header="Scene">
-                <views:SceneView/>
+                <views:SceneView Margin="3"/>
             </TabItem>
         </TabControl>
         
