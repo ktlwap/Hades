@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Hades.Studio.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Hades.Studio.Views.HierarchyView"
+             x:DataType="vm:HierarchyViewModel">
+    
+    <Design.DataContext>
+        <vm:HierarchyViewModel/>
+    </Design.DataContext>
+    
+    <TreeView ItemsSource="{Binding HierarchyNodes}"
+              SelectedItems="{Binding SelectedHierarchyNodes}"
+              SelectionMode="Multiple"
+              AutoScrollToSelectedItem="True">
+        <TreeView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </ContextMenu>
+        </TreeView.ContextMenu>
+        <TreeView.ItemTemplate>
+            <TreeDataTemplate ItemsSource="{Binding Children}">
+                <TextBlock Text="{Binding Name}"/>
+            </TreeDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>

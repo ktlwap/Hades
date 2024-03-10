@@ -3,18 +3,84 @@
         xmlns:vm="using:Hades.Studio.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:Hades.Studio.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Hades.Studio.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Hades.Studio">
+        Title="Hades.Studio" Focusable="True">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    
+    <Window.Styles>
+        
+        <Style Selector="TabControl">
+            <Setter Property="Background" Value="#212121"/>
+        </Style>
+        
+        <Style Selector="TabControl WrapPanel">
+            <Setter Property="Background" Value="#2b2b2b"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="MinHeight" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="MaxHeight" Value="28"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#252525"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Margin" Value="0 0 0 2"/>
+            <Setter Property="Padding" Value="10 0"/>
+        </Style>
+        
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Background" Value="#3d3d3d"/>
+        </Style>
 
+    </Window.Styles>
+    
+    <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*">
+
+        <TabControl Grid.Column="0" Grid.Row="0" Margin="5">
+            <TabItem Header="Hierarchy">
+                <views:HierarchyView DataContext="{Binding HierarchyViewModel}">
+                </views:HierarchyView>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+            <TabItem Header="Filesystem">
+                <views:FileSystemView DataContext="{Binding FileSystemViewModel}">
+                </views:FileSystemView>
+            </TabItem>
+            <TabItem Header="Game Console">
+                <TextBlock Margin="5">This is the game console</TextBlock>
+            </TabItem>
+            <TabItem Header="Engine Console">
+                <TextBlock Margin="5">This is the engine console</TextBlock>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="1" Grid.Row="0" Margin="5">
+            <TabItem Header="Viewport">
+                <Grid>
+                    <TextBlock>Placeholder for GL Viewport</TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <TabControl Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+            <TabItem Header="Inspector">
+                <views:InspectorView DataContext="{Binding InspectorViewModel}">
+                </views:InspectorView>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>

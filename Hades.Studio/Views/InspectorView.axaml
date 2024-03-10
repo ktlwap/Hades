@@ -1,0 +1,138 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Hades.Studio.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Hades.Studio.Views.InspectorView"
+             x:DataType="vm:InspectorViewModel">
+
+    <Design.DataContext>
+        <vm:InspectorViewModel />
+    </Design.DataContext>
+
+    <Grid IsVisible="{Binding Details, Converter={x:Static ObjectConverters.IsNotNull}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Margin="0 5 0 5">
+            <CheckBox Grid.Column="0"
+                      IsChecked="{Binding Details.Node.Enabled}">
+            </CheckBox>
+            <TextBox Grid.Column="1"
+                     Text="{Binding Details.Node.Name}">
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*,Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto">
+            <!-- Position Inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="0"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Position</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="0"
+                     Margin="5 2 0 2">0.0</TextBox>
+
+            <!-- Rotation inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Rotation</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="1"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="1"
+                     Margin="5 2 0 2">0.0</TextBox>
+
+            <!-- Scale inputs -->
+            <TextBlock Grid.Column="0" Grid.Row="2"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 2 5 2">Scale</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">X</TextBlock>
+            <TextBox Grid.Column="2" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="3" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Y</TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
+            <TextBlock Grid.Column="5" Grid.Row="2"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="5 2 0 2">Z</TextBlock>
+            <TextBox Grid.Column="6" Grid.Row="2"
+                     Margin="5 2 0 2">0.0</TextBox>
+        </Grid>
+        
+        <ItemsRepeater Grid.Row="2"
+                       ItemsSource="{Binding Details.ComponentDetails}">
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                    <Expander VerticalAlignment="Top"
+                              IsExpanded="True"
+                              HorizontalAlignment="Stretch" Margin="0, 3, 0, 3">
+                        <Expander.Header>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <CheckBox IsChecked="{Binding Enabled}"/>
+                                <TextBlock Text="{Binding Name}"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Expander.Header>
+                        
+                        <Grid RowDefinitions="*,*" ColumnDefinitions="150,*">
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       VerticalAlignment="Center">
+                                Search
+                            </TextBlock>
+                            <TextBox Grid.Row="0" Grid.Column="1"
+                                     Watermark="Search text" Width="200" />
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                       VerticalAlignment="Center">
+                                Case sensitive?
+                            </TextBlock>
+                            <CheckBox Grid.Row="1" Grid.Column="1" />
+                        </Grid>
+                    </Expander>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </Grid>
+</UserControl>
