@@ -69,10 +69,8 @@
         </TabControl>
         
         <TabControl Grid.Column="1" Grid.Row="0" Margin="5">
-            <TabItem Header="Viewport">
-                <Grid>
-                    <TextBlock>Placeholder for GL Viewport</TextBlock>
-                </Grid>
+            <TabItem Header="Scene">
+                <views:SceneView/>
             </TabItem>
         </TabControl>
         

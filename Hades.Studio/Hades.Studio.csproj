@@ -25,6 +25,7 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
         <PackageReference Include="Svg.Skia" Version="1.0.0.14" />
+        <PackageReference Include="TrippyGL" Version="1.2.1" />
     </ItemGroup>
 
 
