@@ -139,7 +139,22 @@
                 </ItemsRepeater.ItemTemplate>
             </ItemsRepeater>
             
-            <Button HorizontalAlignment="Center" Margin="0, 20, 0, 0">Add Component</Button>
+            <Button Content="Add Component" 
+                    HorizontalAlignment="Center" Margin="0, 20, 0, 0">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel Width="300" Height="300" Spacing="5">
+                            <TextBox Watermark="Search"></TextBox>
+                            <Panel Background="DimGray" Height="30" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center">PlayerController.cs</TextBlock>
+                            </Panel>
+                            <Panel Background="DimGray" Height="30" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center">OtherController.cs</TextBlock>
+                            </Panel>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
