@@ -28,7 +28,7 @@
         </Grid>
 
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*,Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto">
-            <!-- Position Inputs -->
+            <!-- Position inputs -->
             <TextBlock Grid.Column="0" Grid.Row="0"
                        TextAlignment="Left"
                        VerticalAlignment="Center"
@@ -101,38 +101,45 @@
                      Margin="5 2 0 2">0.0</TextBox>
         </Grid>
         
-        <ItemsRepeater Grid.Row="2"
-                       ItemsSource="{Binding Details.ComponentDetails}">
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate>
-                    <Expander VerticalAlignment="Top"
-                              IsExpanded="True"
-                              HorizontalAlignment="Stretch" Margin="0, 3, 0, 3">
-                        <Expander.Header>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <CheckBox IsChecked="{Binding Enabled}"/>
-                                <TextBlock Text="{Binding Name}"
-                                           TextAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Expander.Header>
-                        
-                        <Grid RowDefinitions="*,*" ColumnDefinitions="150,*">
-                            <TextBlock Grid.Row="0" Grid.Column="0"
-                                       VerticalAlignment="Center">
-                                Search
-                            </TextBlock>
-                            <TextBox Grid.Row="0" Grid.Column="1"
-                                     Watermark="Search text" Width="200" />
-                            <TextBlock Grid.Row="1" Grid.Column="0"
-                                       VerticalAlignment="Center">
-                                Case sensitive?
-                            </TextBlock>
-                            <CheckBox Grid.Row="1" Grid.Column="1" />
-                        </Grid>
-                    </Expander>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+        <StackPanel Grid.Row="2">
+            <ItemsRepeater ItemsSource="{Binding Details.ComponentDetails}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <Expander VerticalAlignment="Top"
+                                  IsExpanded="True"
+                                  HorizontalAlignment="Stretch"
+                                  Margin="0, 3, 0, 3"
+                                  Padding="10, 15, 10, 15">
+                            <Expander.Header>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <CheckBox IsChecked="{Binding Enabled}"/>
+                                    <TextBlock Text="{Binding Name}"
+                                               TextAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Expander.Header>
+                            
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="Auto,*">
+                                <TextBlock Grid.Row="0" Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           Padding="0, 0, 5, 0">
+                                    Search
+                                </TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="1"
+                                         Watermark="Search text" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Row="1" Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           Padding="0, 0, 5, 0">
+                                    Case sensitive?
+                                </TextBlock>
+                                <CheckBox Grid.Row="1" Grid.Column="1" />
+                            </Grid>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+            
+            <Button HorizontalAlignment="Center" Margin="0, 20, 0, 0">Add Component</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

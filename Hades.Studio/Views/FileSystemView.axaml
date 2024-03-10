@@ -14,7 +14,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" MinWidth="150"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="3"></ColumnDefinition>
             <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
@@ -29,9 +29,10 @@
                     <MenuItem Header="Paste"/>
                 </ContextMenu>
             </TreeView.ContextMenu>
+            
             <TreeView.ItemTemplate>
                 <TreeDataTemplate ItemsSource="{Binding Children}">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Svg Path="{Binding SmallIconPath}"
                              Css=".black { fill: #FFFFFF; }"/>
                         <TextBlock Text="{Binding Name}"
@@ -42,7 +43,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
         
-        <GridSplitter Grid.Column="1" Background="Black" ResizeDirection="Columns"/>
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
         
         <ScrollViewer Grid.Column="2">
             <ItemsRepeater ItemsSource="{Binding DetailedViewNodes}">

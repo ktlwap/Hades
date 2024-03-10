@@ -43,43 +43,70 @@
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="Background" Value="#3d3d3d"/>
         </Style>
-
+        
+        <Style Selector="GridSplitter">
+            <Setter Property="Background" Value="#161616"/>
+        </Style>
+        
     </Window.Styles>
     
-    <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MinWidth="150"></ColumnDefinition>
+            <ColumnDefinition Width="3"></ColumnDefinition>
+            <ColumnDefinition Width="2*" MinWidth="250"></ColumnDefinition>
+            <ColumnDefinition Width="3"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="350"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="250"></RowDefinition>
+            <RowDefinition Height="3"></RowDefinition>
+            <RowDefinition Height="*" MinHeight="200"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TabControl Grid.Column="0" Grid.Row="0" Margin="5">
+        <!-- Hierarchy view -->
+        <TabControl Grid.Column="0" Grid.Row="0">
             <TabItem Header="Hierarchy">
-                <views:HierarchyView DataContext="{Binding HierarchyViewModel}">
-                </views:HierarchyView>
+                <views:HierarchyView DataContext="{Binding HierarchyViewModel}"/>
             </TabItem>
         </TabControl>
         
-        <TabControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
-            <TabItem Header="Filesystem">
-                <views:FileSystemView DataContext="{Binding FileSystemViewModel}">
-                </views:FileSystemView>
-            </TabItem>
-            <TabItem Header="Game Console">
-                <TextBlock Margin="5">This is the game console</TextBlock>
-            </TabItem>
-            <TabItem Header="Engine Console">
-                <TextBlock Margin="5">This is the engine console</TextBlock>
-            </TabItem>
-        </TabControl>
+        <!-- Grid splitter between hierarchy and scene view -->
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" ResizeDirection="Columns"/>
         
-        <TabControl Grid.Column="1" Grid.Row="0" Margin="5">
-            <TabItem Header="Viewport">
+        <!-- Scene view -->
+        <TabControl Grid.Column="2" Grid.Row="0">
+            <TabItem Header="Scene">
                 <Grid>
                     <TextBlock>Placeholder for GL Viewport</TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>
         
-        <TabControl Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+        <!-- Grid splitter between scene and inspector view -->
+        <GridSplitter Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" ResizeDirection="Columns"/>
+        
+        <!-- Inspector view -->
+        <TabControl Grid.Column="4" Grid.Row="0" Grid.RowSpan="3">
             <TabItem Header="Inspector">
-                <views:InspectorView DataContext="{Binding InspectorViewModel}">
-                </views:InspectorView>
+                <views:InspectorView DataContext="{Binding InspectorViewModel}"/>
+            </TabItem>
+        </TabControl>
+        
+        <!-- Middle horizontal grid splitter -->
+        <GridSplitter Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ResizeDirection="Rows"/>
+        
+        <!-- Filesystem, Game- and Debug-Console view -->
+        <TabControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
+            <TabItem Header="Filesystem">
+                <views:FileSystemView DataContext="{Binding FileSystemViewModel}"/>
+            </TabItem>
+            <TabItem Header="Game Console">
+                <TextBlock Margin="5">This is the game console</TextBlock>
+            </TabItem>
+            <TabItem Header="Engine Console">
+                <TextBlock Margin="5">This is the engine console</TextBlock>
             </TabItem>
         </TabControl>
     </Grid>

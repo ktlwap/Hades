@@ -11,8 +11,8 @@
         <vm:HierarchyViewModel/>
     </Design.DataContext>
     
-    <TreeView ItemsSource="{Binding HierarchyNodes}"
-              SelectedItems="{Binding SelectedHierarchyNodes}"
+    <TreeView ItemsSource="{Binding Nodes}"
+              SelectedItems="{Binding SelectedNodes}"
               SelectionMode="Multiple"
               AutoScrollToSelectedItem="True">
         <TreeView.ContextMenu>
@@ -21,6 +21,7 @@
                 <MenuItem Header="Paste"/>
             </ContextMenu>
         </TreeView.ContextMenu>
+        
         <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding Children}">
                 <TextBlock Text="{Binding Name}"/>

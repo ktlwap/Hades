@@ -5,12 +5,12 @@ namespace Hades.Studio.ViewModels;
 
 public class HierarchyViewModel : ViewModelBase
 {
-    public ObservableCollection<HierarchyNode> HierarchyNodes { get; }
-    public ObservableCollection<HierarchyNode> SelectedHierarchyNodes { get; set; }
+    public ObservableCollection<HierarchyNode> Nodes { get; }
+    public ObservableCollection<HierarchyNode> SelectedNodes { get; set; }
     
     public HierarchyViewModel()
     {
-        HierarchyNodes = new ObservableCollection<HierarchyNode>
+        Nodes = new ObservableCollection<HierarchyNode>
         {                
             new HierarchyNode("Animals", new ObservableCollection<HierarchyNode>
             {
