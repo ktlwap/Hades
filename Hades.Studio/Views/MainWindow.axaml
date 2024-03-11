@@ -76,11 +76,9 @@
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" ResizeDirection="Columns"/>
         
         <!-- Scene view -->
-        <TabControl Grid.Column="2" Grid.Row="0">
+        <TabControl Grid.Column="2" Grid.Row="0" Padding="0">
             <TabItem Header="Scene">
-                <Grid>
-                    <TextBlock>Placeholder for GL Viewport</TextBlock>
-                </Grid>
+                <views:SceneView/>
             </TabItem>
         </TabControl>
         
